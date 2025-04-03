@@ -14,6 +14,7 @@ namespace Project
         private ProjectileSpawner _projectileSpawner;
 
         private bool _canAiming;
+        private bool _canShoot;
 
         public void Initialize(IInput input, CharacterAnimator animator, CharacterAimHandler aimHandler, ProjectileSpawner projectileSpawner)
         {
@@ -37,9 +38,9 @@ namespace Project
 
         private void OnMouseUp()
         {
+            StartCoroutine(WaitEventBeforeShoot());
+
             _aimHanlder.Stop();
-            _projectileSpawner.TrySpawn(_aimHanlder.StartVelocity, _aimHanlder.AimDirection, ProjectileType.Arrow);
-            _animator.SetIdleAnimation();
             _canAiming = false;
         }
 
@@ -48,6 +49,18 @@ namespace Project
             yield return StartCoroutine(_animator.SetStartAttackAnimation());
 
             _canAiming = true;
+            _canShoot = true;
+        }
+
+        private IEnumerator WaitEventBeforeShoot()
+        {
+            yield return StartCoroutine(_animator.SetEndAttackAnimation());
+
+            if (_canShoot == false)
+                yield break;
+
+            _projectileSpawner.TrySpawn(_aimHanlder.StartVelocity, _aimHanlder.AimDirection, ProjectileType.Arrow);
+            _canShoot = false;
         }
     }
 }

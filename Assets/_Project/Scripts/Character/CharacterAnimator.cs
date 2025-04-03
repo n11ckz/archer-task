@@ -21,7 +21,7 @@ namespace Project
         public void Initialize(AnimationState animationState)
         {
             _animationState = animationState;
-            _waitForSpineEvent = new WaitForSpineEvent(_animationState, _shootEvent);
+            _waitForSpineEvent = new WaitForSpineEvent(_animationState, _shootEvent, false);
             _animationState.SetAnimation(InitialTrackIndex, _idleAnimation, true);
         }
 
@@ -32,17 +32,12 @@ namespace Project
             yield return new WaitForSpineAnimationComplete(trackEntry);
         }
 
-        public IEnumerator SetAttackAnimation()
+        public IEnumerator SetEndAttackAnimation()
         {
             _animationState.SetAnimation(InitialTrackIndex, _endAttackAnimation, false);
             _animationState.AddAnimation(InitialTrackIndex, _idleAnimation, true, 0);
 
             yield return _waitForSpineEvent;
-        }
-
-        public void SetIdleAnimation()
-        {
-            _animationState.SetAnimation(InitialTrackIndex, _idleAnimation, false);
         }
     }
 }
