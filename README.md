@@ -11,4 +11,9 @@
 - `Alchemy` (аналог `Odin Inspector`, только бесплатный)
 ### Особенности
 
-Проект стартует с `Boostrap` скрипта, где инициализируются все сущности игры. Также в проекте присутствует настройка персонажа, снарядов и траектории. 
+Проект стартует с `Boostrap` скрипта, где инициализируются все сущности игры. Также в проекте присутствует настройка персонажа, снарядов и траектории.
+
+![Иллюстрация к проекту](https://github.com/n11ckz/archer-task/blob/main/Images/Image_1.png)
+![Иллюстрация к проекту](https://github.com/n11ckz/archer-task/blob/main/Images/Image_2.png)
+![Иллюстрация к проекту](https://github.com/n11ckz/archer-task/blob/main/Images/Image_3.png)
+![Иллюстрация к проекту](https://github.com/n11ckz/archer-task/blob/main/Images/Image_4.png)
